@@ -69,4 +69,7 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+  .container {
+    @apply !w-[90vw] max-w-[1280px] mx-auto;
+  }
 }

@@ -5,8 +5,8 @@ import { getCampaigns } from "@/lib/actions";
 export default async function Home() {
   const data = await getCampaigns();
   return (
-    <div>
+    <main className="container">
       <DataTable columns={columns} data={data} />
-    </div>
+    </main>
   );
 }
