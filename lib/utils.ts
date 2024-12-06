@@ -14,3 +14,8 @@ export function convertDate(milliseconds: string) {
 
   return `${year}-${month}-${day}`;
 }
+
+export function convertDateToMilliseconds(value: Date) {
+  const date = new Date(value);
+  return date.getTime();
+}
