@@ -19,3 +19,10 @@ export function convertDateToMilliseconds(value: Date) {
   const date = new Date(value);
   return date.getTime();
 }
+
+export function convertMillisecondsToDays(milliseconds: number) {
+  const total_seconds = Math.floor(milliseconds / 1000);
+  const total_minutes = Math.floor(total_seconds / 60);
+  const total_hours = Math.floor(total_minutes / 60);
+  return Math.floor(total_hours / 24);
+}

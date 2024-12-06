@@ -11,6 +11,15 @@ export async function getCampaigns(): Promise<Campaign[]> {
   return response.json();
 }
 
+export async function getSingleCampaign(id: string): Promise<Campaign> {
+  const response = await fetch(`${process.env.API_BASE_URL}/campaigns/${id}`, {
+    headers: {
+      "X-API-Key": `${process.env.AD_SERVER_API_KEY}`,
+    },
+  });
+  return response.json();
+}
+
 export async function addCampaigns(value: {
   id: string;
   startDate: number;

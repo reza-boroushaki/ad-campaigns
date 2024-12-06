@@ -13,7 +13,11 @@ export default async function Home() {
         <BarChart chartData={data} />
       </div>
       <div className="my-10 flex flex-col sm:flex-row w-full items-center sm:h-[270px] gap-10">
-        <SingleStat data={data.length} className="max-sm:w-full" />
+        <SingleStat
+          data={data.length}
+          title="Overal Campaigns"
+          className="max-sm:w-full"
+        />
         <Form />
       </div>
       <DataTable columns={columns} data={data} />

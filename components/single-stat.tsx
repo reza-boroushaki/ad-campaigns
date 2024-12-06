@@ -9,15 +9,17 @@ import {
 
 const SingleStat = ({
   data,
+  title,
   className,
 }: {
-  data: number;
-  className: string;
+  data: number | string;
+  title: string;
+  className?: string;
 }) => {
   return (
     <Card className={`${className} h-full`}>
       <CardHeader>
-        <CardTitle>Overal Campaigns</CardTitle>
+        <CardTitle>{title}</CardTitle>
       </CardHeader>
       <CardContent className="flex items-center justify-center h-full text-5xl font-bold">
         <p>{data}</p>
