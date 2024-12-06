@@ -13,7 +13,7 @@ import { CalendarIcon } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-import { cn, convertDateToMilliseconds } from "@/lib/utils";
+import { cn, convertDateToMilliseconds, encodeObject } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import {
@@ -31,7 +31,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { addCampaigns } from "@/lib/actions";
 import { v4 as uuidv4 } from "uuid";
-import { revalidatePath } from "next/cache";
 
 const FormSchema = z.object({
   date: z.object(
@@ -61,14 +60,15 @@ const CampaignForm = () => {
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     try {
       const { date, impressions } = FormSchema.parse(data);
-      await addCampaigns({
+      // convert to string
+      const encoded = encodeObject({
         id: uuidv4(),
-        startDate: convertDateToMilliseconds(date.from),
-        endDate: convertDateToMilliseconds(date.to),
-        targetImpressions: Number(impressions),
+        startDate: convertDateToMilliseconds(date.from).toString(),
+        endDate: convertDateToMilliseconds(date.to).toString(),
+        targetImpressions: impressions,
       });
-      // revalidate cache to fetch the new campaign
-      revalidatePath("/");
+
+      await addCampaigns(new URLSearchParams(encoded).toString());
     } catch (error) {
       if (error instanceof z.ZodError) {
         for (const issue of error.issues) {

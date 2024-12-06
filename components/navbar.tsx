@@ -5,7 +5,6 @@ const Navbar = () => {
     <div className="border border-b py-4">
       <nav className="container space-x-6 font-bold">
         <Link href="./">Home</Link>
-        {/* <Link href="./add">Add Campaign</Link> */}
       </nav>
     </div>
   );

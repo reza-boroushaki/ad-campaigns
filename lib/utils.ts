@@ -1,5 +1,6 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { Campaign } from "./types";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -25,4 +26,10 @@ export function convertMillisecondsToDays(milliseconds: number) {
   const total_minutes = Math.floor(total_seconds / 60);
   const total_hours = Math.floor(total_minutes / 60);
   return Math.floor(total_hours / 24);
+}
+
+export function encodeObject(obj: Record<string, string>) {
+  return Object.fromEntries(
+    Object.entries(obj).map(([key, value]) => [key, String(value)])
+  );
 }
