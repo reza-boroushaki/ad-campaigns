@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/card";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
-import { CalendarIcon } from "lucide-react";
+import { CalendarIcon, Loader2 } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -57,6 +57,8 @@ const CampaignForm = () => {
     },
   });
 
+  const { isSubmitting } = form.formState;
+
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     try {
       const { date, impressions } = FormSchema.parse(data);
@@ -69,6 +71,9 @@ const CampaignForm = () => {
       });
 
       await addCampaigns(new URLSearchParams(encoded).toString());
+
+      // reset form inputs
+      form.reset();
     } catch (error) {
       if (error instanceof z.ZodError) {
         for (const issue of error.issues) {
@@ -155,8 +160,14 @@ const CampaignForm = () => {
                 </FormItem>
               )}
             />
-            <Button className="w-full" type="submit">
-              Submit
+            <Button disabled={isSubmitting} className="w-full" type="submit">
+              {isSubmitting ? (
+                <>
+                  <Loader2 className="animate-spin" /> Please wait
+                </>
+              ) : (
+                "Submit"
+              )}
             </Button>
           </form>
         </Form>
