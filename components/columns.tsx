@@ -51,4 +51,22 @@ export const columns: ColumnDef<Campaign>[] = [
       );
     },
   },
+  {
+    accessorKey: "status",
+    header: () => <div className="text-left">Status</div>,
+    cell: ({ row }) => {
+      const impressionDiff =
+        Number(row.getValue("targetImpressions")) -
+        Number(row.getValue("deliveredImpressions"));
+      return (
+        <div
+          className={`${
+            impressionDiff === 0 ? "text-red-500" : "text-green-500"
+          } text-left font-bold`}
+        >
+          {impressionDiff === 0 ? "Ended" : "Running"}
+        </div>
+      );
+    },
+  },
 ];
