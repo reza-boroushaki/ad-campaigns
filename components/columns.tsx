@@ -3,14 +3,6 @@
 import { Campaign } from "@/lib/types";
 import { convertDate } from "@/lib/utils";
 import { ColumnDef } from "@tanstack/react-table";
-import { z } from "zod";
-
-const campaignSchema = z.object({
-  id: z.string(),
-  startDate: z.string(),
-  endDate: z.string(),
-  targetImpressions: z.number(),
-});
 
 export const columns: ColumnDef<Campaign>[] = [
   {

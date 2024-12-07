@@ -32,9 +32,15 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-export function TrendingChart({ data }: { data: Campaign }) {
+export function TrendingChart({
+  data,
+  className,
+}: {
+  data: Campaign;
+  className?: string;
+}) {
   return (
-    <Card className="flex flex-col">
+    <Card className={`${className} flex flex-col`}>
       <CardHeader className="items-center pb-0">
         <CardTitle>Impressions</CardTitle>
         {/* <CardDescription>January - June 2024</CardDescription> */}

@@ -31,9 +31,9 @@ export async function addCampaigns(value: string) {
         "X-API-Key": `${process.env.AD_SERVER_API_KEY}`,
       },
     });
-    await response.json();
     // relvalidate the path to get the latest update
     revalidatePath("/");
+    return await response.json();
   } catch (error) {
     console.log(error);
   }
