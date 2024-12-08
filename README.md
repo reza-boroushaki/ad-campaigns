@@ -3,7 +3,6 @@
     <img src="https://cdn.worldvectorlogo.com/logos/next-js.svg" width="30" alt="next.js" />
     <img src="https://cdn.worldvectorlogo.com/logos/typescript.svg" width="30" alt="typescript" />
     <img src="https://cdn.worldvectorlogo.com/logos/tailwindcss.svg" width="40" alt="tailwindcss" />
-    <img src="https://cdn.worldvectorlogo.com/logos/jest-2.svg" width="30" alt="jest" />
   </div>
 
   <h3 align="center">Simple Campaigns Dashboard</h3>
@@ -15,6 +14,8 @@
 ## <a name="introduction">Introduction</a>
 
 Welcome to a delightfully straightforward dashboard where managing and visualizing campaigns is as easy as pie—charts included! Each campaign gets its moment in the spotlight with a dedicated page for all the details. The sleek and modern UI, powered by shadcn, ensures your data looks as good as your ideas (or maybe even better).
+
+**Important Note:** use `--force` flag when installing packages
 
 # <a name="tech-stack">Tech Stack</a>
 
